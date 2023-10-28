@@ -44,7 +44,6 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-
                 <div class="center-form">
                     <form action="" method="get">
                         <div class="input-group mb-2" style="width: 30rem">
@@ -53,7 +52,6 @@
                             </div>
                         </form>
                 </div>
-                    
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">

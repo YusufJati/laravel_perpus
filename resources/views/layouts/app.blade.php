@@ -31,13 +31,19 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="center-form">
+                        <form action="" method="get">
+                            <div class="input-group mb-2" style="width: 30rem">
+                                <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Cari Judul Buku, Penulis, Penerbit, Tahun, ISBN" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <button class="btn btn-success" type="submit">Search</button>
+                                </div>
+                            </form>
+                    </div>
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
