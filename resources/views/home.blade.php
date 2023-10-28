@@ -31,7 +31,7 @@
     });
 </script>
 <div class="col-12 col-sm-6 mb-3">
-    <select name="kategori" id="kategori-dropdown" class="form-control" style="width: 15rem">
+    <select name="kategori" id="kategori-dropdown" class="form-control form-select" style="width: 15rem">
         <option value="">Select Category</option>
         @foreach ($kategori as $item)
             <option value="{{ $item->idkategori }}">{{ $item->nama }}</option>
