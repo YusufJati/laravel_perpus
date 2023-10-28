@@ -13,30 +13,25 @@ class CommentController extends Controller
         return view('Komentar_buku.index', ['komentar' => $komentar]);
     }
 
-    // Menyimpan komentar baru
-    public function store(Request $request)
+    public function store(Request $request, $idbuku)
     {
-        $this->middleware('auth');
-
-        // Validasi data input
         $request->validate([
-            'noktp' => 'required',
-            'idbuku' => 'required',
             'komentar' => 'required',
         ]);
 
-        // Ambil anggota yang saat ini login
         $anggota = Auth::user();
 
-        // Simpan komentar ke database
         Komentar_buku::create([
-            'noktp' => $request->noktp,
-            'idbuku' => $request->idbuku,
+            'noktp' => $anggota->noktp,
+            'idbuku' => $idbuku,
             'komentar' => $request->komentar,
         ]);
 
         return redirect()->back()->with('success', 'Komentar berhasil disimpan.');
     }
+
+
+
 
 }
 ?>

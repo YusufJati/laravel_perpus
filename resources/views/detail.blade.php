@@ -79,17 +79,13 @@
                 <h5 class="fw-normal">Tambah Komentar</h5>
                 <div class="content shadow p-3 mb-5 bg-light-subtle rounded">
                     @if (Auth::check())
-                        <form action="{{ route('komentar.store') }}" method="POST">
+                        <form action="{{ route('komentar.store', ['idbuku' => $buku->idbuku]) }}" method="POST">
                             @csrf
-                            <!-- <div class="form-group">
-                                <label for="noktp">noktp</label>
-                                <input type="text" class="form-control" id="noktp" name="noktp" required>
-                            </div> -->
                             <div class="form-group">
                                 <label for="komentar">Komentar</label>
                                 <textarea class="form-control" id="komentar" name="komentar" rows="3" required></textarea>
                             </div>
-                            <input type="hidden" name="buku_id" value="{{ $buku->id }}">
+                            <input type="hidden" name="idbuku" value="{{ $buku->idbuku }}">
                             <button type="submit" class="btn btn-primary">Kirim Komentar</button>
                         </form>
                     @else
