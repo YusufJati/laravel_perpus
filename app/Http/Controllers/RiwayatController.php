@@ -15,7 +15,7 @@ class RiwayatController extends Controller
 
     public function index(){
         $transaksi = Detail_transaksi::all();
-        return view("dashboard.anggota.riwayat",[
+        return view("riwayat",[
             'transaksi' => $transaksi]);
     }
 
