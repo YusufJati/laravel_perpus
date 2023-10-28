@@ -36,10 +36,15 @@
     <div class="main">
         <nav class="navbar navbar-dark navbar-expand-lg bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                @auth
+                <a class="navbar-brand" href="{{ route('home') }}"></a>
+                @endauth
+                @guest
+                <a class="navbar-brand" href="{{  url('/') }}">
                     <img src="{{ asset('images/bukk.png') }}" width="30" height="30" class="d-inline-block align-text-top me-0">
                     Perpustakaan
                 </a>
+                @endguest
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>

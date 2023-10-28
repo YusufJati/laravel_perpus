@@ -67,6 +67,6 @@ class AnggotaController extends Controller
 
     function riwayat()
     {
-        return view('dashboard.anggota.riwayat');
+        return view('riwayat');
     }
 }
