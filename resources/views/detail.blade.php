@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <h5 class="fw-normal"><a href="/" class="text-decoration-none text-dark">Dashboard</a></h5>
+    <!-- <h5 class="fw-normal"><a href="/" class="text-decoration-none text-dark">Dashboard</a></h5> -->
     <div class="d-flex">
         <p class="ms-auto">
             <a href="/" class="text-decoration-none">Dashboard</a>
@@ -15,7 +15,7 @@
     <div class="container p-0">
         <div class="row">
             <div class="detail col-md-8">
-                <h5 class="fw-normal">Detail Buku</h5>
+                <!-- <h5 class="fw-normal">Detail Buku</h5> -->
                 <div class="card mb-3" style="max-width: 100%; height: 360px;">
                     <div class="row g-0">
                         <div class="images col-md-4"> <!-- Kolom gambar diperbesar -->
@@ -81,10 +81,10 @@
                     @if (Auth::check())
                         <form action="{{ route('komentar.store') }}" method="POST">
                             @csrf
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="noktp">noktp</label>
                                 <input type="text" class="form-control" id="noktp" name="noktp" required>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="komentar">Komentar</label>
                                 <textarea class="form-control" id="komentar" name="komentar" rows="3" required></textarea>
