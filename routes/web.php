@@ -3,6 +3,8 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RiwayatController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
