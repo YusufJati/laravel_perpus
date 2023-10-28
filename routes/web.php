@@ -32,4 +32,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('komentar', CommentController::class);
-Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');
+Route::post('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');

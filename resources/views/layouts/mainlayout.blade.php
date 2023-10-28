@@ -36,7 +36,7 @@
     <div class="main">
         <nav class="navbar navbar-dark navbar-expand-lg bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="{{ asset('images/bukk.png') }}" width="30" height="30" class="d-inline-block align-text-top me-0">
                     Perpustakaan
                 </a>
@@ -71,9 +71,10 @@
                 @endguest
                 <!-- Jika pengguna sudah terotentikasi -->
                 @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('riwayat') }}">Riwayat</a>
-                    </li>
+                <form action="{{ route('riwayat') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="nav-link btn">Tampilkan Riwayat</button>
+                </form>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->nama }}
