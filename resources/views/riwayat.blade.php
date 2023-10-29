@@ -86,6 +86,7 @@
                                     <th scope="col">Judul Buku</th>
                                     <th scope="col">Tanggal Peminjaman</th>
                                     <th scope="col">Tanggal Jatuh Tempo</th>
+                                    <th scope="col">Tanggal Kembali</th>
                                     <th scope="col">Durasi Terlambat</th>
                                     <th scope="col">Denda</th>
                                 </tr>
@@ -110,6 +111,7 @@
                                                echo $durasiterlambat. " hari"
                                             @endphp
                                         </td>
+                                        <td>{{ $item->tgl_kembali }}</td>
                                         <td>
                                             {{ $item->denda }}
                                         </td>
