@@ -115,8 +115,6 @@
                                         <td>
                                             {{ $item->denda }}
                                         </td>
-
-
                                     </tr>
                                 @endforeach
                             </tbody>
