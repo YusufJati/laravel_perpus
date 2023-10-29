@@ -6,7 +6,6 @@ use App\Models\Komentar_buku;
 
 class CommentController extends Controller
 {
-    // Menampilkan semua komentar
     public function index()
     {
         $komentar = Komentar_buku::all();
