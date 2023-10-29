@@ -14,10 +14,10 @@
             var selectedKategori = $(this).val();
             filterBuku(selectedKategori);
         });
-        
+
         function filterBuku(kategoriId) {
             $.ajax({
-                url: '/', 
+                url: '/',
                 type: 'GET',
                 data: { kategori: kategoriId },
                 success: function(response) {
@@ -37,7 +37,7 @@
             <option value="{{ $item->idkategori }}">{{ $item->nama }}</option>
         @endforeach
     </select>
-</div>       
+</div>
 
     <div class="my-2">
         <div class="d-flex flex-wrap">
