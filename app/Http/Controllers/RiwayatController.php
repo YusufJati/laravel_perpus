@@ -9,13 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RiwayatController extends Controller
 {
-    // public function index(Detail_transaksi $detail_transaksi){
-    //     $detail_transaksi -> load('get');
-    //     return view('riwayat', ['detail_transaksi' => $detail_transaksi]);
-    // }
-    
-    
-
+     
     public function index()
     {
         $noktp = Auth::user()->noktp;
