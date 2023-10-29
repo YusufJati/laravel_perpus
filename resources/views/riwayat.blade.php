@@ -102,6 +102,7 @@
                                             $jatuh = $tempo->format('Y-m-d');
                                             echo $jatuh;
                                         @endphp</td>
+                                        <td>{{ $item->tgl_kembali }}</td>
                                         <td>
                                             @php
                                                $tanggalkembali = Carbon::parse($item->tgl_kembali);
@@ -111,7 +112,6 @@
                                                echo $durasiterlambat. " hari"
                                             @endphp
                                         </td>
-                                        <td>{{ $item->tgl_kembali }}</td>
                                         <td>
                                             {{ $item->denda }}
                                         </td>
