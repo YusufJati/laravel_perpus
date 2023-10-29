@@ -19,7 +19,7 @@ class RatingController extends Controller
 
     public function store(Request $request, $idbuku) {
         $request->validate([
-            'rating' => 'required|numeric|between:1,10', // Pastikan peringkat berada dalam rentang 1 hingga 10
+            'rating' => 'required|numeric|between:1,5', // Pastikan peringkat berada dalam rentang 1 hingga 10
         ]);
 
         $anggota = Auth::user();
