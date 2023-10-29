@@ -2,7 +2,7 @@
     use Carbon\Carbon;
 @endphp
 
-@extends('layouts.mainlayout')
+@extends('layouts.userLayout')
 
 @section('title', 'Riwayat')
 
