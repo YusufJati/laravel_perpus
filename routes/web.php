@@ -30,8 +30,9 @@ Route::get('/detail/{buku}', [DetailController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//  Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');
+
+
 Route::group(['middleware' => 'auth.basic'], function () {
-    Route::post('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');
+    Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');
     Route::post('/komentar/{idbuku}', [CommentController::class, 'store'])->name('komentar.store');
 });
