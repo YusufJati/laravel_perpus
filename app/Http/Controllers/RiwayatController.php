@@ -35,7 +35,4 @@ class RiwayatController extends Controller
             'terlambat' => $terlambat
         ]);
     }
-
-
-
 }

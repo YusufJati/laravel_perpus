@@ -30,6 +30,26 @@
 
     }
 
+    .star-input {
+        display: none;
+    }
+
+    .star-label {
+        font-size: 25px;
+        color: #ccc;
+        cursor: pointer;
+    }
+
+    .star-label::before {
+        content: '\2605';
+    }
+
+    .star-input:checked + label.star-label,
+    .star-input:checked ~ .star-input + label.star-label {
+        color: #ffcc00;
+    }
+</style>
+
 
 </style>
 <body>
@@ -73,7 +93,7 @@
                 @auth
                 <form action="{{ route('riwayat') }}" method="POST">
                     @csrf
-                    <button type="submit" class="nav-link btn">Tampilkan Riwayat</button>
+                    <button type="submit" class="nav-link btn">Riwayat</button>
                 </form>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -108,6 +128,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    // JavaScript to check stars before the selected one
+    const starInputs = document.querySelectorAll('.star-input');
+    starInputs.forEach((input, index) => {
+        input.addEventListener('change', () => {
+            for (let i = 0; i <= index; i++) {
+                starInputs[i].checked = true;
+            }
+        });
+    });
 
+    </script>
 </body>
+
+
 </html>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\RiwayatController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +36,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => 'auth.basic'], function () {
     Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');
     Route::post('/komentar/{idbuku}', [CommentController::class, 'store'])->name('komentar.store');
+    Route::post('/rating/{idbuku}', [RatingController::class, 'store'])->name('rating.store');
 });
