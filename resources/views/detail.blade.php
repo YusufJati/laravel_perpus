@@ -86,7 +86,7 @@
                                 <textarea class="form-control" id="komentar" name="komentar" rows="3" required></textarea>
                             </div>
                             <input type="hidden" name="idbuku" value="{{ $buku->idbuku }}">
-                            <button type="submit" class="btn btn-primary">Kirim Komentar</button>
+                            <button type="submit" class="btn btn-primary mt-3">Kirim Komentar</button>
                         </form>
                     @else
                     <a href="{{route('login')}}" class="btn btn-warning">Silahkan Login</a>
