@@ -16,6 +16,11 @@
         });
         
         function filterBuku(kategoriId) {
+            if (kategoriId === 'all') {
+                window.location.replace('/');
+                return;
+            }
+
             $.ajax({
                 url: '/', 
                 type: 'GET',
@@ -36,8 +41,10 @@
         @foreach ($kategori as $item)
             <option value="{{ $item->idkategori }}">{{ $item->nama }}</option>
         @endforeach
+        <option value="">All</option>    
     </select>
 </div>       
+
 
     <div class="my-2">
         <div class="d-flex flex-wrap">
