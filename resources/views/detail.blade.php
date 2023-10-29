@@ -88,7 +88,7 @@
 
             <div class="col-md-4 d-flex flex-column align-items-center">
                 @if (Auth::check())
-                <h5 class="fw-normal">Tambah Rating</h5>
+                <h5 class="fw-normal">Beri Rating</h5>
                 <div class="shadow d-flex w-100 p-3 mb-5 bg-light-subtle justify-center rounded">
                 @if (Auth::check()) {{-- Memeriksa apakah pengguna telah login --}}
                     @php
