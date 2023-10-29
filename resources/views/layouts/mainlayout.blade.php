@@ -93,7 +93,7 @@
                 @auth
                 <form action="{{ route('riwayat') }}" method="POST">
                     @csrf
-                    <button type="submit" class="nav-link btn">Tampilkan Riwayat</button>
+                    <button type="submit" class="nav-link btn">Riwayat</button>
                 </form>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

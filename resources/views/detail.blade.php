@@ -101,7 +101,7 @@
                                 @endfor
                             </div>
                             <input type="hidden" name="idbuku" value="{{ $buku->idbuku }}">
-                            <button type="submit" class="btn btn-primary">Submit Rating</button>
+                            <button type="submit" class="btn btn-primary mt-3">Submit Rating</button>
                         </form>
                     @endif
                 @endif
