@@ -29,6 +29,9 @@
                                         @endphp
                                         <span class="fw-bold">{{ number_format($averageRating, 1) }}</span>
                                     @else
+                                        @php
+                                        $averageRating = 0;
+                                        @endphp
                                         Belum ada peringkat.
                                     @endif
                                     
@@ -85,7 +88,7 @@
 
             <div class="col-md-4 d-flex flex-column align-items-center">
                 @if (Auth::check())
-                <h5 class="fw-normal">Tambah Rating</h5>
+                <h5 class="fw-normal">Beri Rating</h5>
                 <div class="shadow d-flex w-100 p-3 mb-5 bg-light-subtle justify-center rounded">
                 @if (Auth::check()) {{-- Memeriksa apakah pengguna telah login --}}
                     @php
@@ -99,8 +102,8 @@
                         <form action="{{ route('rating.store', ['idbuku' => $buku->idbuku]) }}" method="POST">
                             @csrf
                             <div class="mb-2 flex-row-reverse d-flex gap-2 flex-wrap-reverse">
-                                @for ($i = 1; $i <= 10; $i++)
-                                    <input class="star-input" value="{{ 11 - $i }}" id="star-{{ $i }}" type="radio" name="rating"/>
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <input class="star-input" value="{{ 6 - $i }}" id="star-{{ $i }}" type="radio" name="rating"/>
                                     <label class="star-label" for="star-{{ $i }}"></label>
                                 @endfor
                             </div>
@@ -158,26 +161,29 @@
     <script>
         function generateStars(rating, container) {
             container.innerHTML = '';
-            const maxRating = 10;
-            const numFullStars = Math.floor(rating / 2);
-            const hasHalfStar = rating % 2 !== 0;
-            const numEmptyStars = maxRating / 2 - numFullStars - (hasHalfStar ? 1 : 0);
+            const maxRating = 5;
+            const numFullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
 
             for (let i = 0; i < numFullStars; i++) {
                 const starIcon = document.createElement('i');
                 starIcon.className = 'bi bi-star-fill';
+                starIcon.style.color = '#ffcc00';
                 container.appendChild(starIcon);
             }
 
             if (hasHalfStar) {
                 const halfStarIcon = document.createElement('i');
                 halfStarIcon.className = 'bi bi-star-half';
+                halfStarIcon.style.color = '#ffcc00';
                 container.appendChild(halfStarIcon);
             }
 
+            const numEmptyStars = maxRating - numFullStars - (hasHalfStar ? 1 : 0);
             for (let i = 0; i < numEmptyStars; i++) {
                 const emptyStarIcon = document.createElement('i');
                 emptyStarIcon.className = 'bi bi-star';
+                emptyStarIcon.style.color = '#ffcc00';
                 container.appendChild(emptyStarIcon);
             }
         }
@@ -185,5 +191,6 @@
         const ratingContainer = document.querySelector('.starContainer');
         const averageRating = {{ $averageRating }};
         generateStars(averageRating, ratingContainer);
+
     </script>
 @endsection
