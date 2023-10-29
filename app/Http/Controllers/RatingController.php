@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -9,6 +10,12 @@ use App\Models\Rating_buku;
 
 class RatingController extends Controller
 {
+    public function show($idbuku) {
+        $averageRating = Rating_buku::where('idbuku', $idbuku)->avg('skor_rating');
+        $buku = Buku::find($idbuku);
+    
+        return view('buku.show', compact('buku', 'averageRating'));
+    }
 
     public function store(Request $request, $idbuku) {
         $request->validate([
@@ -35,4 +42,10 @@ class RatingController extends Controller
             return redirect()->back()->with('success', 'Peringkat berhasil disimpan.');
         }
     }
+
+    public function calculateAverageRating($idbuku) {
+        $averageRating = Rating_buku::where('idbuku', $idbuku)->avg('skor_rating');
+        return $averageRating;
+    }
+    
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Buku extends Model
 {
@@ -23,5 +24,11 @@ class Buku extends Model
         return $this->hasOne(Rating_buku::class, 'idbuku', 'idbuku');
     }
 
-    
+    public function averageRating()
+    {
+        return DB::table('rating_buku')
+            ->where('idbuku', $this->idbuku)
+            ->avg('skor_rating');
+    }
+
 }

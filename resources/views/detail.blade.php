@@ -23,11 +23,15 @@
                                 <h5 class="card-title">{{ $buku->judul }}</h5>
                                 <p class="card-text">
                                     @if ($buku->getRatingBuku)
-                                        {{ $buku->getRatingBuku->skor_rating }}
+                                        <div class="starContainer"></div>
+                                        @php
+                                        $averageRating = $buku->averageRating();
+                                        @endphp
+                                        <span class="fw-bold">{{ number_format($averageRating, 1) }}</span>
                                     @else
                                         Belum ada peringkat.
                                     @endif
-                                    <span class="starContainer"></span>
+                                    
                                 </p>
                                 <li class="list-group-item">
                                     <table>
@@ -179,6 +183,7 @@
         }
 
         const ratingContainer = document.querySelector('.starContainer');
-        generateStars({{ $buku->getRatingBuku->skor_rating ?? 0 }}, ratingContainer);
+        const averageRating = {{ $averageRating }};
+        generateStars(averageRating, ratingContainer);
     </script>
 @endsection
