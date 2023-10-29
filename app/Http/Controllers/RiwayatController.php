@@ -17,12 +17,19 @@ class RiwayatController extends Controller
 
     public function index()
     {
-        // Ambil noktp dari pengguna yang sudah login
-        $noktp = Auth::user()->noktp;
         
-        // Lakukan query untuk mengambil peminjaman beserta detail transaksinya
-        $peminjaman = Peminjaman::where('noktp', $noktp)->with('detailTransaksis')->get();
+        $transaksi = Detail_transaksi::where('tgl_kembali','!=','0000-00-00')->get();
+        $transaksi->load('getBuku');
 
-        return view('riwayat', ['peminjaman' => $peminjaman]);
+        $peminjaman = Detail_transaksi::whereNull('tgl_kembali')->get();
+        $peminjaman->load('getBuku');
+
+        $terlambat = Peminjaman::join('detail_transaksi','peminjaman.idtransaksi','=','detail_transaksi.idtransaksi')->join('buku','detail_transaksi.idbuku','=','buku.idbuku')->select('peminjaman.*','detail_transaksi.*','buku.*')->whereRaw('DATEDIFF(detail_transaksi.tgl_kembali, peminjaman.tgl_pinjam) > 14')->get();
+
+        return view("riwayat",[
+            'transaksi' => $transaksi,
+            'peminjaman'=> $peminjaman,
+            'terlambat' => $terlambat
+        ]);
     }
 }

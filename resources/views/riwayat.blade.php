@@ -1,3 +1,7 @@
+@php
+    use Carbon\Carbon;
+@endphp
+
 @extends('layouts.mainlayout')
 
 @section('title', 'Riwayat')
@@ -34,16 +38,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Bulan</td>
-                                    <td>01-10-2023</td>
-                                    <td>05-10-2023</td>
-                                </tr>
-                                <tr>
-                                    <td>Dia Dilanku 1990</td>
-                                    <td>20-09-2023</td>
-                                    <td>23-09-2023</td>
-                                </tr>
+                                @foreach ($transaksi as $item)
+                                    <tr>
+                                        <td>{{ $item->getBuku->pluck('judul')->implode(' ')}}</td>
+                                        <td>{{ $item->getPeminjaman->tgl_pinjam }}</td>
+                                        <td>{{ $item->tgl_kembali }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -60,11 +61,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Bintang</td>
-                                    <td>10-10-2023</td>
-                                    <td>17-10-2023</td>
-                                </tr>
+                                @foreach ($peminjaman as $item)
+                                    <tr>
+                                        <td>{{ $item->getBuku->pluck('judul')->implode(' ')}}</td>
+                                        <td>{{ $item->getPeminjaman->tgl_pinjam }}</td>
+                                        <td>@php
+                                            $jatuhtempo = new Carbon($item->tgl_pinjam);
+                                            $tempo = $jatuhtempo->addDays(14);
+                                            $jatuh = $tempo->format('Y-m-d');
+                                            echo $jatuh;
+                                        @endphp</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -78,18 +86,37 @@
                                     <th scope="col">Judul Buku</th>
                                     <th scope="col">Tanggal Peminjaman</th>
                                     <th scope="col">Tanggal Jatuh Tempo</th>
+                                    <th scope="col">Tanggal Kembali</th>
                                     <th scope="col">Durasi Terlambat</th>
                                     <th scope="col">Denda</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Buku 4</td>
-                                    <td>05-09-2023</td>
-                                    <td>12-09-2023</td>
-                                    <td>3 hari</td>
-                                    <td>15000</td>
-                                </tr>
+                                @foreach ($terlambat as $item)
+                                    <tr>
+                                        <td>{{ $item->judul}}</td>
+                                        <td>{{ $item->tgl_pinjam }}</td>
+                                        <td>@php
+                                            $jatuhtempo = new Carbon($item->tgl_pinjam);
+                                            $tempo = $jatuhtempo->addDays(14);
+                                            $jatuh = $tempo->format('Y-m-d');
+                                            echo $jatuh;
+                                        @endphp</td>
+                                        <td>{{ $item->tgl_kembali }}</td>
+                                        <td>
+                                            @php
+                                               $tanggalkembali = Carbon::parse($item->tgl_kembali);
+                                               $tanggaltenggat = Carbon::parse($jatuh);
+
+                                               $durasiterlambat = $tanggalkembali->diffInDays($tanggaltenggat);
+                                               echo $durasiterlambat. " hari"
+                                            @endphp
+                                        </td>
+                                        <td>
+                                            {{ $item->denda }}
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
