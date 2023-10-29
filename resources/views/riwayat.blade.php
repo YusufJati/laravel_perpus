@@ -40,8 +40,8 @@
                             <tbody>
                                 @foreach ($transaksi as $item)
                                     <tr>
-                                        <td>{{ $item->getBuku->pluck('judul')->implode(' ')}}</td>
-                                        <td>{{ $item->getPeminjaman->tgl_pinjam }}</td>
+                                        <td>{{ $item->judul}}</td>
+                                        <td>{{ $item->tgl_pinjam }}</td>
                                         <td>{{ $item->tgl_kembali }}</td>
                                     </tr>
                                 @endforeach
@@ -63,8 +63,8 @@
                             <tbody>
                                 @foreach ($peminjaman as $item)
                                     <tr>
-                                        <td>{{ $item->getBuku->pluck('judul')->implode(' ')}}</td>
-                                        <td>{{ $item->getPeminjaman->tgl_pinjam }}</td>
+                                        <td>{{ $item->judul}}</td>
+                                        <td>{{ $item->tgl_pinjam }}</td>
                                         <td>@php
                                             $jatuhtempo = new Carbon($item->tgl_pinjam);
                                             $tempo = $jatuhtempo->addDays(14);
