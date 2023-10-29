@@ -25,7 +25,4 @@ class RiwayatController extends Controller
 
         return view('riwayat', ['peminjaman' => $peminjaman]);
     }
-
-
-
 }

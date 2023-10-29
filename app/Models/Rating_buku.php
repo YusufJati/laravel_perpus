@@ -10,5 +10,11 @@ class Rating_buku extends Model
     use HasFactory;
     protected $table = 'rating_buku';
 
-    
+    public $timestamps = false;
+    protected $fillable = [
+        'noktp', 
+        'idbuku',
+        'skor_rating',
+        'tgl_rating'
+    ];
 }
