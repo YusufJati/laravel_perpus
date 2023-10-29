@@ -168,12 +168,14 @@
             for (let i = 0; i < numFullStars; i++) {
                 const starIcon = document.createElement('i');
                 starIcon.className = 'bi bi-star-fill';
+                starIcon.style.color = '#ffcc00';
                 container.appendChild(starIcon);
             }
 
             if (hasHalfStar) {
                 const halfStarIcon = document.createElement('i');
                 halfStarIcon.className = 'bi bi-star-half';
+                halfStarIcon.style.color = '#ffcc00';
                 container.appendChild(halfStarIcon);
             }
 
@@ -181,6 +183,7 @@
             for (let i = 0; i < numEmptyStars; i++) {
                 const emptyStarIcon = document.createElement('i');
                 emptyStarIcon.className = 'bi bi-star';
+                emptyStarIcon.style.color = '#ffcc00';
                 container.appendChild(emptyStarIcon);
             }
         }
